@@ -1,0 +1,27 @@
+<!DOCTYPE html> 
+<html> 
+<head>
+    <meta charset="utf-8" >
+    <title>Vue 示例</title>
+</head> 
+<body>
+    <div id="app">
+        <a v-bind:href="url">链接</a>
+        <img v-bind:src="imgUrl" width="380">
+        <!-- 缩写为
+        <a :href="url">链接</a>
+        <img :src="imgUrl"> -->
+    </div>
+        <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+        <script>
+            var app = new Vue({ 
+                el:'#app',
+                data: {
+                    show: true,
+                    url: 'http://www.imooc.com',
+                    imgUrl: 'C:/git/Learning_Vue/img/狗子.jpg'
+                }
+            })
+        </script> 
+</body> 
+</html>
