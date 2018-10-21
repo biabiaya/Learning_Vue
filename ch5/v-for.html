@@ -53,7 +53,12 @@
                         age:21
                     }
                 }            
-            })
+            });
+            
+            //找出含有JavaScript关键词的书目
+            app.Books = app.Books.filter(function (item) {
+                return item.name.match(/JavaScript/);
+            });
         </script> 
 </body> 
 </html>
