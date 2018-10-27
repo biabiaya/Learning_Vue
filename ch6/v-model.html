@@ -1,0 +1,127 @@
+<!DOCTYPE html> 
+<html> 
+<head>
+    <meta charset="utf-8" >
+    <title>Vue 示例</title>
+</head> 
+<body>
+    <div id="app">
+        <!-- <input type="text" v-model="message" placeholder="输入...">
+        <p>输入的内容是: {{ message }}</p> -->
+
+        <!-- 对于文本域 textarea 也是同样的用法 -->
+        <textarea v-model="text" placeholder="输入..."></textarea>
+        <p>输入的内容是:{{ text }}</p>
+
+        <!-- 希望实时更新时，可用@input来代替v-model -->
+        <input type="text" @input="handleInput" placeholder="输入...">
+        <p>输入的内容：{{ message }}</p>
+
+        <!-- 单选按钮 -->
+        <!-- <input type="radio" :checked="picked">
+        <label>单选按钮</label> -->
+
+        <!-- 组合V-model和value使用来实现互斥选择效果 -->
+        <input type="radio" v-model="picked" value="h" id="html">
+        <label for="html">HTML</label>
+        <br>
+        <input type="radio" v-model="picked" value="j" id="js">
+        <label for="js">JavaScript</label>
+        <br>
+        <input type="radio" v-model="picked" value="c" id="css">
+        <label for="css">CSS</label>
+        <br>
+        <p>选择的项是: {{ picked }}</p>
+
+        <!-- 复选框 -->
+        <input type="checkbox"  v-model="checked" value="h" id="html">
+        <label for="html">HTML</label>
+        <br>
+        <input type="checkbox" v-model="checked" value="j" id="js">
+        <label for="js">JavaScript</label>
+        <br>
+        <input type="checkbox" v-model="checked" value="c" id="css">
+        <label for="css">CSS</label>
+        <br>
+        <p>选择的项是: {{ checked }}</p>
+
+        <!-- 选择列表 -->
+        <select v-model="selected" multiple>
+            <option>html</option>
+            <option value="js">JavaScript</option>
+            <option>css</option>
+        </select>
+        <p>选择的项是: {{ optionSelected }}</p>
+
+        <!--<option>用v-for动态输出 -->
+        <select v-model="optionSelected">
+            <option
+                v-for="option in options"
+                :value=option.value>{{ option.text }}</option>
+        </select>
+
+        <!-- 用v-bind绑定动态数据 -->
+        <input type="radio" v-model="pickedValue" :value="value">
+        <label>单选按钮</label>
+        <p>{{ pickedValue }}</p>
+        <p>{{ value }}</p>
+
+        <!-- 复选框动态绑定数据 -->
+        <input
+            type="checkbox"
+            v-model="toggle"
+            :true-value="value1"
+            :false-value="value2">
+        <label>复选框</label>
+        <p>{{ toggle }}</p>
+        <p>{{ value1 }}</p>
+        <p>{{ value2 }}</p>
+
+        <!-- 选中列表动态绑定数据 -->
+        <select v-model="selectedNumber">
+            <option :value="{ number: 12312 }">123456</option>
+        </select>
+        {{ selectedNumber.number }}
+
+    </div>
+        <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+        <script>
+            var app = new Vue({ 
+                el:'#app',
+                data: {
+                   message: '',
+                   text: '',
+                   picked: 'j',
+                   checked: ['h', 'j'],
+                   selected: ['html','js'],
+                   optionSelected: 'css',
+                   options: [
+                       {
+                           text: 'h',
+                           value: 'html'
+                       },
+                       {
+                           text: 'j',
+                           value: 'js'
+                       },
+                       {
+                           text: 'c',
+                           value: 'css'
+                       }
+                   ],
+                   pickedValue: false,
+                   value: 123,
+                   toggle: false,
+                   value1: 'a',
+                   value2: 'b',
+                   selectedNumber: 'aa'
+                },
+                methods: {
+                    handleInput: function (e) {
+                        this.message = e.target.value
+                    }
+                }
+            })
+        </script> 
+</body> 
+</html>

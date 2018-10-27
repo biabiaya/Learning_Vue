@@ -1,0 +1,72 @@
+<!DOCTYPE html> 
+<html> 
+<head>
+    <meta charset="utf-8" >
+    <title>Vue 示例</title>
+</head> 
+<body>
+    <div id="app">
+        <!-- 使用v-bind来动态绑定props的值 -->
+        <!-- <input type="text" v-model="parentMessage">
+        <my-component :message="parentMessage"></my-component> -->
+
+        <!-- 单向数据流 -->
+        <my-component :width="100"></my-component>
+
+        <!-- 数据验证 -->
+        <my-component-1 :width="100"></my-component-1>
+
+    </div>
+        <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+        <script>
+            Vue.component('my-component', {
+                props: {
+                    //必须是数字类型
+                    propA: Number,
+                    //必须是字符串或数字类型
+                    propB: [String, Number],
+                    //布尔值，如果没有定义，默认值是true
+                    propC: {
+                        type: Boolean,
+                        default: true
+                    },
+                    //数字，而且是必传
+                    propD: {
+                        type: Number,
+                        required: true
+                    },
+                    //如果是数组或对象，默认值必须是一个函数来返回
+                    propE: {
+                        type: Array,
+                        default: function () {
+                            return [];
+                        }
+                    },
+                    //自定义一个验证函数
+                    propF: {
+                        validator: function (value) {
+                            return value > 10;
+                        }
+                    }
+                }
+            });
+
+            Vue.component('my-component-1', {
+                props: ['width'],
+                template: '<div :style="style">组件内容</div>',
+                computed: {
+                    style: function () {
+                        width: this.width + 'px'
+                    }
+                }
+            });
+            
+            var app = new Vue({ 
+                el:'#app',
+                // data: {
+                //     parentMessage: ''
+                // }
+            })
+        </script> 
+</body> 
+</html>
