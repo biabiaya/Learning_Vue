@@ -83,12 +83,18 @@
         </select>
         {{ selectedNumber.number }}
 
+        
+        <!-- 双向 -->
+        <br>
+        <input v-model="something"> {{ something }}
+
     </div>
         <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
         <script>
             var app = new Vue({ 
                 el:'#app',
                 data: {
+                   something: 213,
                    message: '',
                    text: '',
                    picked: 'j',
